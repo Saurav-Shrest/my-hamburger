@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hamburger</title>
+    <style>
+        body {
+            background-color: #ccc;
+        }
+
+        .header__ham {
+            width: 40px;
+            height: 29px;
+            cursor: pointer;
+            position: relative;
+            z-index: 40;
+        }
+
+        .header__ham::before,
+        .header__ham::after,
+        span {
+            content: '';
+            background-color: black;
+            display: block;
+            height: 3px;
+            /* // margin: 6px 0; */
+
+            transition: all 0.4s cubic-bezier(0, 0.16, 0.58, 1.5);
+        }
+
+        span {
+            margin: 10px 0;
+            width: 30px;
+            margin-left: auto;
+            transition: all 0.2s cubic-bezier(0, 0.16, 0.58, 1.5);
+        }
+
+        .header__ham::after {
+            width: 20px;
+            margin-left: auto;
+        }
+
+        .header__ham:hover::after,
+        .header__ham:hover::before {
+            width: 100%;
+        }
+
+        .header__ham.open::after,
+        .header__ham.open::before {
+            background-color: white;
+        }
+
+        .header__ham.open span {
+            background-color: white;
+            width: 0;
+        }
+
+
+        .header__ham.open::before {
+            width: 49px;
+            transform: rotate(-45deg);
+            transform: rotate(-35deg);
+            transform-origin: 44px 14px;
+        }
+
+        .header__ham.open::after {
+            width: 49px;
+            transform: rotate(35deg);
+            transform-origin: 42px -11px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__ham" id="ham">
+            <span></span>
+        </div>
+    </header>
+</body>
+
+<script>
+    const ham = document.getElementById("ham");
+    if (ham !== null) {
+        ham.addEventListener("click", () => {
+            console.log("clicked");
+            ham.classList.toggle("open");
+        });
+    }
+</script>
+
+</html>
